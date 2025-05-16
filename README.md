@@ -1,5 +1,5 @@
 # T2_Algoritmos_Pilha-Fila
-Estudo de Algoritmos, Estrutura de Dados e Programação
+Estudo de Pilha e Fila em Algoritmos, Estrutura de Dados e Programação
 
 ## Alunos:
 Carolina Tartaroti Shishito – RA: 24.00599-0 
