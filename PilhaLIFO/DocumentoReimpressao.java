@@ -7,6 +7,7 @@ public class DocumentoReimpressao {
     private String nomeUsuario;
     private LocalDateTime horarioSolicitacao;
     private LocalDateTime horarioReimpressao;
+    private DocumentoReimpressao proximo;
 
     public DocumentoReimpressao(String nomeArquivo, String nomeUsuario) {
         this.nomeArquivo = nomeArquivo;
@@ -33,6 +34,14 @@ public class DocumentoReimpressao {
 
     public LocalDateTime getHorarioSolicitacao() { // os horarios estão saindo meio estranhos mas da pra entender, só não achei como formatar.
         return horarioSolicitacao;
+    }
+
+    public DocumentoReimpressao getProximo() {
+        return proximo;
+    }
+
+    public void setProximo(DocumentoReimpressao proximo) {
+        this.proximo = proximo;
     }
 
     @Override

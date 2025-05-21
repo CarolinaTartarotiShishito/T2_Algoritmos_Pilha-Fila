@@ -1,16 +1,22 @@
 package PilhaLIFO;
 public class PilhaReimpressao {
-    private No topo;
+    private DocumentoReimpressao topo;    //o atributo de controle topo não é visível para o cliente
     private int tamanho;
-    private int capacidadeMaxima;   //construtor é padrão, herdado de Object, topo = null
-                                    //o atributo de controle topo não é visível para o cliente
+    private int capacidadeMaxima;
+
+    public PilhaReimpressao(int capacidadeMaxima) {   //construtor é padrão, herdado de Object, topo = null
+        this.capacidadeMaxima = capacidadeMaxima;
+        this.topo = null;
+        this.tamanho = 0;
+    }
+                                
     public boolean pilhaVazia() {
         return topo == null;
     }
 
     public boolean push(DocumentoReimpressao doc) {
         if (estaCheia()) return false;
-        No novo = new No(doc); 
+        DocumentoReimpressao novo = doc; 
         novo.setProximo(topo);
         topo = novo;
         tamanho++;  // esta coisa aumenta o tamanho da pilha
@@ -19,7 +25,7 @@ public class PilhaReimpressao {
     
     public DocumentoReimpressao pop() {
         if (pilhaVazia()) throw new RuntimeException("falha no desempilhamento");
-        DocumentoReimpressao doc = topo.getInfo();
+        DocumentoReimpressao doc = topo;
         doc.registrarReimpressao();
         topo = topo.getProximo();
         tamanho--;
@@ -28,15 +34,8 @@ public class PilhaReimpressao {
     
     public DocumentoReimpressao peek() {
         if (pilhaVazia()) throw new RuntimeException("Pilha vazia");
-        return topo.getInfo();
+        return topo;
     }
-
-    public PilhaReimpressao(int capacidadeMaxima) {
-        this.capacidadeMaxima = capacidadeMaxima;
-        this.topo = null;
-        this.tamanho = 0;
-    }
-
 
     public boolean estaCheia() {
         return tamanho == capacidadeMaxima;
@@ -44,12 +43,12 @@ public class PilhaReimpressao {
 
 
     public void consultarDocumento(String nomeArquivo) {
-        No atual = topo;
+        DocumentoReimpressao atual = topo;
         int posicao = 1;
         while (atual != null) {
-            if (atual.getInfo().getNomeArquivo().equals(nomeArquivo)) {
+            if (atual.getNomeArquivo().equalsIgnoreCase(nomeArquivo)) { //
                 System.out.println("Documento encontrado na posição " + posicao);
-                System.out.println("Horário de solicitação: " + atual.getInfo().getHorarioSolicitacao());
+                System.out.println("Horário de solicitação: " + atual.getHorarioSolicitacao());
                 return;
             }
             atual = atual.getProximo();
@@ -63,9 +62,9 @@ public class PilhaReimpressao {
             System.out.println("Pilha vazia.");
             return;
         }
-        No atual = topo;
+        DocumentoReimpressao atual = topo;
         while (atual != null) {
-            System.out.println(atual.getInfo());
+            System.out.println(atual);
             atual = atual.getProximo();
         }
     }
