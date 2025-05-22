@@ -1,24 +1,25 @@
-package CodigosReferencias;
-import java.util.Random;
+// package CodigosReferencias;
+// import java.util.Random;
 
-import Fila_FIFO.Fila;
-public class TesteFila {
-    public static void main(String[] args) {
-        Random random = new Random();
-        Fila fila = new Fila();
-        for (int i=1; i <= 20; i++) {
-            try {
-                if (random.nextBoolean()) {
-                    fila.enfileira(i);
-                }
-                else {
-                    System.out.println(fila.desenfileira() + " saiu");
-                }
-                System.out.println(fila);
-            }
-            catch (RuntimeException rt) {
-                System.out.println(rt.getMessage());
-            }
-        }
-    }
-}
+// import Fila_FIFO.Fila;
+
+// public class TesteFila {
+//     public static void main(String[] args) {
+//         Random random = new Random();
+//         Fila fila = new Fila();
+//         for (int i=1; i <= 20; i++) {
+//             try {
+//                 if (random.nextBoolean()) {
+//                     fila.enfileira(i);
+//                 }
+//                 else {
+//                     System.out.println(fila.desenfileira() + " saiu");
+//                 }
+//                 System.out.println(fila);
+//             }
+//             catch (RuntimeException rt) {
+//                 System.out.println(rt.getMessage());
+//             }
+//         }
+//     }
+// }
