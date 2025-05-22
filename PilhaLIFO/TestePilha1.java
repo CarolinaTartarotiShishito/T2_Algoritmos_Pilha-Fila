@@ -17,12 +17,13 @@ public class TestePilha1 {
                         break;
                     }
                     System.out.print("Nome do arquivo: ");
-                    String nomeArquivo = scanner.next();
+                    String nomeArquivo = scanner.nextLine();
                     System.out.print("Nome do usuário: ");
-                    String usuario = scanner.next();
+                    String usuario = scanner.nextLine();
                     pilha.solicitarReimpressao(nomeArquivo, usuario);
-                    System.out.println("Solicitação registrada com sucesso! (Horário: " +
-                            Calendar.getInstance().getTime() + ")");
+                    System.out.println(
+                            "Solicitação registrada com sucesso! (Horário: " + Calendar.getInstance().getTime() + ")");
+
                     break;
                 case 2:
                     DocumentoReimpressao doc = pilha.executarReimpressao();
@@ -37,7 +38,6 @@ public class TestePilha1 {
                     }
                     break;
                 case 3:
-                    scanner.nextLine();
                     System.out
                             .print("Digite o nome do arquivo para consultar (ou deixe em branco para listar todos): ");
                     String consulta = scanner.nextLine();
@@ -49,9 +49,8 @@ public class TestePilha1 {
                         if (docConsulta == null) {
                             System.out.println("Documento não está na pilha.");
                         } else {
-                            System.out.printf(
-                                    "Arquivo: %s | Usuário: %s | Posição (a partir do topo): %d | Solicitado: %tc\n",
-                                    docConsulta.nomeArquivo, docConsulta.usuario, pos, docConsulta.horarioSolicitacao);
+                            System.out.printf("Arquivo: %s | Usuário: %s | Posição (a partir do topo): %d | Solicitado: %tc\n",
+                            docConsulta.nomeArquivo, docConsulta.usuario, pos, docConsulta.horarioSolicitacao);
                         }
                     }
                     break;
@@ -75,7 +74,8 @@ public class TestePilha1 {
         try {
             return Integer.parseInt(entrada);
         } catch (NumberFormatException e) {
-            return -1; // Esse treco faz cair no DEFAULT do switch case caso o usuario digite algo diferente de um numero
+            return -1; // Esse treco faz cair no DEFAULT do switch case caso o usuario digite algo
+                       // diferente de um numero
         }
     }
 }
