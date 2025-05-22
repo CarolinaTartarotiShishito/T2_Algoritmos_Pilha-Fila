@@ -5,7 +5,6 @@ public class Documento {
     private String nomeArquivo;
     private String usuario;
     private LocalDateTime horarioSolicitacao;
-    private Documento proximo;
 
     public Documento(String nomeArquivo, String usuario) {
         this.nomeArquivo = nomeArquivo;
@@ -23,14 +22,6 @@ public class Documento {
 
     public LocalDateTime getHorarioSolicitacao() {
         return horarioSolicitacao;
-    }
-
-    public Documento getProximo() {
-        return proximo;
-    }
-
-    public void setProximo(Documento proximo) {
-        this.proximo = proximo;
     }
 
     @Override

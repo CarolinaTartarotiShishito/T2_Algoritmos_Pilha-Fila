@@ -62,9 +62,13 @@ public class SimuladorImpressora {
     }
 
     private static void consultarDocumento() {
-        System.out.print("Digite o nome do arquivo: ");
-        String nome = scanner.nextLine();
-        fila.busca(nome);        
+        if(fila.filaVazia()){
+            System.out.println("A fila de impressão está vazia!");
+        } else{
+            System.out.print("Digite o nome do arquivo: ");
+            String nome = scanner.nextLine();
+            System.out.println(fila.busca(nome));
+        }        
     }
 
     private static void exibirFila() {
