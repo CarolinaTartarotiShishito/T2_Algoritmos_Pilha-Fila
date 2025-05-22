@@ -6,7 +6,7 @@ import java.util.Calendar;
 public class TestePilha1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ReimpressaoPilha pilha = new ReimpressaoPilha(2);
+        ReimpressaoPilha pilha = new ReimpressaoPilha(5);
 
         int opcao = menu(scanner);
         while (opcao != 0) {
@@ -22,7 +22,7 @@ public class TestePilha1 {
                     String usuario = scanner.next();
                     pilha.solicitarReimpressao(nomeArquivo, usuario);
                     System.out.println("Solicitação registrada com sucesso! (Horário: " +
-                        Calendar.getInstance().getTime() + ")");
+                            Calendar.getInstance().getTime() + ")");
                     break;
                 case 2:
                     DocumentoReimpressao doc = pilha.executarReimpressao();
@@ -38,7 +38,8 @@ public class TestePilha1 {
                     break;
                 case 3:
                     scanner.nextLine();
-                    System.out.print("Digite o nome do arquivo para consultar (ou deixe em branco para listar todos): ");
+                    System.out
+                            .print("Digite o nome do arquivo para consultar (ou deixe em branco para listar todos): ");
                     String consulta = scanner.nextLine();
                     if (consulta.isEmpty()) {
                         pilha.relatorio();
@@ -48,8 +49,9 @@ public class TestePilha1 {
                         if (docConsulta == null) {
                             System.out.println("Documento não está na pilha.");
                         } else {
-                            System.out.printf("Arquivo: %s | Usuário: %s | Posição (a partir do topo): %d | Solicitado: %tc\n",
-                                docConsulta.nomeArquivo, docConsulta.usuario, pos, docConsulta.horarioSolicitacao);
+                            System.out.printf(
+                                    "Arquivo: %s | Usuário: %s | Posição (a partir do topo): %d | Solicitado: %tc\n",
+                                    docConsulta.nomeArquivo, docConsulta.usuario, pos, docConsulta.horarioSolicitacao);
                         }
                     }
                     break;
@@ -69,6 +71,11 @@ public class TestePilha1 {
         System.out.println("2 - Reimprimir");
         System.out.println("3 - Consultar pilha de reimpressao");
         System.out.println("0 - sair");
-        return scanner.nextInt();
+        String entrada = scanner.nextLine();
+        try {
+            return Integer.parseInt(entrada);
+        } catch (NumberFormatException e) {
+            return -1; // Esse treco faz cair no DEFAULT do switch case caso o usuario digite algo diferente de um numero
+        }
     }
 }
